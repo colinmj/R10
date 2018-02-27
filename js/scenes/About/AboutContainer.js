@@ -12,6 +12,12 @@ class AboutContainer extends Component {
     };
   }
 
+  static route = {
+    navigationBar: {
+      title: "About"
+    }
+  };
+
   componentDidMount() {
     fetch("https://r10app-95fea.firebaseio.com/code_of_conduct.json")
       .then(res => res.json())
