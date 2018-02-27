@@ -7,7 +7,8 @@ class AboutContainer extends Component {
   constructor() {
     super();
     this.state = {
-      data: []
+      data: [],
+      loading: true
     };
   }
 
@@ -16,11 +17,14 @@ class AboutContainer extends Component {
       .then(res => res.json())
       .then(data => this.setState({ data }))
       .then(err => console.log(err));
+
+    this.setState({
+      loading: false
+    });
   }
 
   render() {
-    // console.log(this.state.data);
-    return <About data={this.state.data} />;
+    return <About data={this.state.data} loading={this.state.loading} />;
   }
 }
 

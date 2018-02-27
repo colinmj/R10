@@ -1,11 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Text, View, Image, ScrollView } from "react-native";
+import { Text, View, Image, ScrollView, ActivityIndicator } from "react-native";
 import { styles } from "./styles";
 
-const About = ({ data }) => {
+const About = ({ data, loading }) => {
   console.log(data);
-  return (
+  return loading ? (
+    <View style={styles.loader}>
+      <ActivityIndicator size={"large"} color={"#9963ea"} />
+    </View>
+  ) : (
     <ScrollView>
       <View>
         <View style={styles.header}>
@@ -25,7 +29,7 @@ const About = ({ data }) => {
           R10 is a conference that focuses on just about any topic related to
           dev
         </Text>
-        <Text style={styles.title}>Date and Time</Text>
+        <Text style={styles.title}>Date & Time</Text>
         <Text
           style={{
             marginLeft: 5,

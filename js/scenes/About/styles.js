@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
     alignItems: "center",
     borderBottomWidth: 3,
-    borderBottomColor: "gray"
+    borderBottomColor: "#e6e6e6"
   },
   title: {
     fontSize: 25,
@@ -16,8 +16,14 @@ export const styles = StyleSheet.create({
     marginRight: 5
   },
   code: {
-    color: "purple",
+    color: "#9963ea",
     marginTop: 10,
     marginBottom: 10
+  },
+  loader: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 270
   }
 });
