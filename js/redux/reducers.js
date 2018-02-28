@@ -1,8 +1,10 @@
 import { NavigationReducer } from "@expo/ex-navigation";
 import { combineReducers } from "redux";
 import aboutReducer from "./modules/about";
+import scheduleReducer from "./modules/schedule";
 
 export default combineReducers({
   navigation: NavigationReducer,
-  about: aboutReducer
+  about: aboutReducer,
+  schedule: scheduleReducer
 });

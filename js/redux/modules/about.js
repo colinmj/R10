@@ -15,8 +15,9 @@ const codeOfConductSuccess = data => ({
   payload: data
 });
 
-const codeOfConductError = () => ({
-  type: CODE_CONDUCT_ERROR
+const codeOfConductError = err => ({
+  type: CODE_CONDUCT_ERROR,
+  payload: err
 });
 
 export const getConduct = () => dispatch => {
