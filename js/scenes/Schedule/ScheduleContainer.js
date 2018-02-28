@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSessions } from "../../redux/modules/schedule";
+import { goToSession } from "../../navigation/navigationHelpers";
 import Schedule from "./Schedule";
 
 class ScheduleContainer extends Component {

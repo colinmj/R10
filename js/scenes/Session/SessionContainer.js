@@ -6,7 +6,15 @@ class SessionContainer extends Component {
     super(props);
   }
 
-  render() {}
+  static route = {
+    navigationBar: {
+      title: "Session"
+    }
+  };
+
+  render() {
+    return <Session />;
+  }
 }
 
 export default SessionContainer;

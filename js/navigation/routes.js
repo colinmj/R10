@@ -6,11 +6,13 @@ import {
 import About from "../scenes/About";
 import NavigationLayout from "./NavigationLayout";
 import Schedule from "../scenes/Schedule";
+import Session from "../scenes/Session";
 
 const Router = createRouter(() => ({
   layout: () => NavigationLayout,
   about: () => About,
-  schedule: () => Schedule
+  schedule: () => Schedule,
+  session: () => Session
 }));
 
 export default Router;
