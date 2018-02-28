@@ -9,7 +9,7 @@ import {
 
 import Icon from "react-native-vector-icons/Ionicons";
 
-// import { colors, typography } from "../config/styles";
+import { colors, typography } from "../config/styles";
 
 class NavigationLayout extends Component {
   render() {

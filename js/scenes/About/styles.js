@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 25,
+    fontFamily: 'Montserrat-Light',
     marginLeft: 5,
     marginRight: 5
   },
