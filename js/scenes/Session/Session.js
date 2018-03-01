@@ -11,9 +11,9 @@ const Session = ({ list, name }) => {
       <Text>{list.item.title}</Text>
       <Text>{moment.unix(list.item.start_time).format("LT")}</Text>
       <Text>{list.item.description}</Text>
-      <TouchableHighlight onPress={() => goToSpeaker("speaker", { name })}>
+      <TouchableHighlight onPress={() => goToSpeaker(name)}>
         <View>
-          <Text> {name}</Text>
+          <Text> {name.name}</Text>
         </View>
       </TouchableHighlight>
     </View>

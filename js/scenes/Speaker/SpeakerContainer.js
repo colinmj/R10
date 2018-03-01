@@ -6,7 +6,8 @@ class SpeakerContainer extends Component {
     super(props);
   }
   render() {
-    return <Speaker />;
+    console.log(this.props.route.params);
+    return <Speaker speakerData={this.props.route.params.speakerData} />;
   }
 }
 
