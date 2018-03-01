@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, Platform } from "react-native";
 import About from "./scenes/About";
 import {
   NavigationProvider,
@@ -21,7 +21,10 @@ export default class App extends Component {
     return (
       <Provider store={Store}>
         <NavigationProvider context={navigationContext}>
-          <StackNavigation initialRoute={Router.getRoute("layout")} />
+          <StackNavigation
+            initialRoute={Router.getRoute("layout")}
+            navigatorUID="root"
+          />
         </NavigationProvider>
       </Provider>
     );

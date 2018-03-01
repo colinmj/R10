@@ -1,7 +1,8 @@
 import React from "react";
 import propTypes from "prop-types";
-import { Text, View } from "react-native";
+import { Text, View, TouchableHighlight } from "react-native";
 import moment from "moment";
+import { goToSpeaker } from "../../navigation/navigationHelpers";
 
 const Session = ({ list, name }) => {
   return (
@@ -10,7 +11,11 @@ const Session = ({ list, name }) => {
       <Text>{list.item.title}</Text>
       <Text>{moment.unix(list.item.start_time).format("LT")}</Text>
       <Text>{list.item.description}</Text>
-      <Text> {name}</Text>
+      <TouchableHighlight onPress={() => goToSpeaker("speaker", { name })}>
+        <View>
+          <Text> {name}</Text>
+        </View>
+      </TouchableHighlight>
     </View>
   );
 };
