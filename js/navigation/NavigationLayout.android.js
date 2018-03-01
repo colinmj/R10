@@ -23,7 +23,7 @@ class NavigationLayout extends Component {
         <DrawerNavigationItem
           id="schedule"
           title="Schedule"
-          renderTitle={this.renderTitle}
+          renderTitle={isSelected => this.renderTitle(isSelected, "Schedule")}
         >
           <StackNavigation
             // id="schedule"
@@ -35,7 +35,7 @@ class NavigationLayout extends Component {
         <DrawerNavigationItem
           id="about"
           title="About"
-          renderTitle={this.renderTitle}
+          renderTitle={isSelected => this.renderTitle(isSelected, "About")}
           renderIcon={isSelected =>
             this.renderIcon(isSelected, "ios-information-circle")
           }
@@ -55,7 +55,7 @@ class NavigationLayout extends Component {
         style={{
           // fontFamily: typography.fontMain,
           fontSize: 10,
-          color: isSelected ? "white" : "gray"
+          color: isSelected ? "pink" : "black"
         }}
       >
         {title}
