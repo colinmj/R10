@@ -1,6 +1,12 @@
 import React from "react";
 import propTypes from "prop-types";
-import { Text, View, TouchableHighlight, Image } from "react-native";
+import {
+  Text,
+  View,
+  TouchableHighlight,
+  Image,
+  TouchableOpacity
+} from "react-native";
 import moment from "moment";
 import { goToSpeaker } from "../../navigation/navigationHelpers";
 
@@ -21,6 +27,10 @@ const Session = ({ list, name }) => {
           <Text> {name.name}</Text>
         </View>
       </TouchableHighlight>
+
+      <TouchableOpacity>
+        <Text>Add To Faves</Text>
+      </TouchableOpacity>
     </View>
   );
 };

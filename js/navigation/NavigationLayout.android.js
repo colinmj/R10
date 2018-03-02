@@ -17,8 +17,8 @@ class NavigationLayout extends Component {
       <DrawerNavigation
         id="main"
         navigatorUID="main"
-        initialItem="schedule"
-        tabBarColor={"black"}
+        initialItem="about"
+        tintColor={"black"}
       >
         <DrawerNavigationItem
           id="schedule"
@@ -26,9 +26,21 @@ class NavigationLayout extends Component {
           renderTitle={isSelected => this.renderTitle(isSelected, "Schedule")}
         >
           <StackNavigation
-            // id="schedule"
+            id="schedule"
             navigatorUID="schedule"
             initialRoute={Router.getRoute("schedule")}
+          />
+        </DrawerNavigationItem>
+
+        <DrawerNavigationItem
+          id="faves"
+          title="Faves"
+          renderTitle={isSelected => this.renderTitle(isSelected, "Faves")}
+        >
+          <StackNavigation
+            id="schedule"
+            navigatorUID="faves"
+            initialRoute={Router.getRoute("faves")}
           />
         </DrawerNavigationItem>
 
@@ -41,7 +53,7 @@ class NavigationLayout extends Component {
           }
         >
           <StackNavigation
-            // id="about"
+            id="about"
             initialRoute={Router.getRoute("about")}
             navigatorUID="about"
           />
@@ -58,6 +70,7 @@ class NavigationLayout extends Component {
           color: isSelected ? "pink" : "black"
         }}
       >
+        {console.log("blahblah")}
         {title}
       </Text>
     );
