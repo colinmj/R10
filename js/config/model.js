@@ -23,7 +23,7 @@ export const createFave = id => {
 
 export const deleteFave = id => {
   realm.write(() => {
-    const deleteFave = realm.objects("Fave").filtered("id == $0", sessionId);
+    const deleteFave = realm.objects("Fave").filtered("id == $0", id);
     realm.delete(deleteFave);
   });
 };

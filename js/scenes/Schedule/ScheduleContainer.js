@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSessions } from "../../redux/modules/schedule";
+import { formatSessionData } from "../../redux/helpers";
 
 import Schedule from "./Schedule";
 
@@ -22,7 +23,7 @@ class ScheduleContainer extends Component {
 
   render() {
     const { loading, sessionData } = this.props;
-    return <Schedule data={sessionData} />;
+    return <Schedule data={formatSessionData(sessionData)} />;
   }
 }
 

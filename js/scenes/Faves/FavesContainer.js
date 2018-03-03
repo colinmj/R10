@@ -22,9 +22,11 @@ class FavesContainer extends Component {
   }
 
   render() {
-    console.log(this.props.faves);
-    console.log(this.props.sessionData);
-    return <Faves />;
+    // console.log(this.props.faves);
+    // console.log(this.props.sessionData);
+    return (
+      <Faves faves={this.props.faves} sessionData={this.props.sessionData} />
+    );
   }
 }
 

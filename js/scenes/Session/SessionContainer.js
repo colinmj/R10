@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Session from "./Session";
+import { connect } from "react-redux";
 import { formatDataObject } from "../../redux/helpers";
 
 class SessionContainer extends Component {
@@ -31,13 +32,19 @@ class SessionContainer extends Component {
   }
 
   render() {
+    // console.log(this.props.faves);
     return (
       <Session
         list={this.props.route.params.sessionData}
         name={this.state.speaker}
+        faves={this.props.faves}
       />
     );
   }
 }
 
-export default SessionContainer;
+const mapStateToProps = state => ({
+  faves: state.faves.faves
+});
+
+export default connect(mapStateToProps)(SessionContainer);

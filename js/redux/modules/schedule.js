@@ -26,7 +26,8 @@ export const getSessions = () => dispatch => {
 
   fetch(SESSIONS_URL)
     .then(res => res.json())
-    .then(data => dispatch(sessionsSuccess(formatSessionData(data))))
+    // .then(data => dispatch(sessionsSuccess(formatSessionData(data))))
+    .then(data => dispatch(sessionsSuccess(data)))
     .catch(err => dispatch(sessionsError(err)));
 };
 

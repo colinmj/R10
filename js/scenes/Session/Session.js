@@ -1,6 +1,6 @@
 import React from "react";
 import propTypes from "prop-types";
-import { createFave } from "../../config/model";
+import { createFave, deleteFave } from "../../config/model";
 import {
   Text,
   View,
@@ -11,8 +11,9 @@ import {
 import moment from "moment";
 import { goToSpeaker } from "../../navigation/navigationHelpers";
 
-const Session = ({ list, name }) => {
-  console.log(list.item);
+const Session = ({ list, name, faves }) => {
+  // console.log(list.item);
+  console.log(faves);
   return (
     <View>
       <Text>{list.item.location}</Text>
@@ -32,6 +33,9 @@ const Session = ({ list, name }) => {
 
       <TouchableOpacity onPress={() => createFave(list.item.session_id)}>
         <Text>Add To Faves</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => deleteFave(list.item.session_id)}>
+        <Text>Remove From Faves</Text>
       </TouchableOpacity>
     </View>
   );
