@@ -4,7 +4,7 @@ const FaveSchema = {
   name: "Fave",
   primaryKey: "id",
   properties: {
-    sessionId: "string",
+    id: "string",
     faved_on: "date"
   }
 };
@@ -15,13 +15,13 @@ export const queryFaves = () => {
   return realm.objects("Fave");
 };
 
-export const createFave = sessionId => {
+export const createFave = id => {
   realm.write(() => {
-    realm.create("Fave", { id: sessionId, faved_on: new Date() });
+    realm.create("Fave", { id: id, faved_on: new Date() });
   });
 };
 
-export const deleteFave = sessionId => {
+export const deleteFave = id => {
   realm.write(() => {
     const deleteFave = realm.objects("Fave").filtered("id == $0", sessionId);
     realm.delete(deleteFave);

@@ -1,35 +1,35 @@
-import {
-  createFave
-} from "../../config/model";
+import realm, { queryFaves } from "../../config/model";
 
-CREATE_NEW_FAVE = "CREATE_NEW_FAVE";
+GET_FAVES = "GET_FAVES";
 
-const createNewFave = fave => ({
-  type: CREATE_NEW_FAVE,
-  payload: fave
+const getFaves = faves => ({
+  type: GET_FAVES,
+  payload: faves
 });
 
-export const newFave = () => dispatch => {
-  dispatch(createNewFave(fave));
+export const letsFetchSomeFaves = () => dispatch => {
+  const data = queryFaves();
+  const faves = {};
+  data.map((item, key) => (faves[item.id] = "true"));
+  dispatch(getFaves(faves));
 };
 
 //reducer
 
 export default (
   state = {
-    fave: ""
+    faves: ""
   },
   action
 ) => {
   switch (action.type) {
-    case CREATE_NEW_FAVE:
-      {
-        return {
-          ...state,
-          fave: action.payload
-        }
-      }
+    case GET_FAVES: {
+      return {
+        ...state,
+        faves: action.payload
+      };
+    }
     default:
       return state;
   }
-}
+};

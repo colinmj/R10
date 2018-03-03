@@ -1,5 +1,6 @@
 import React from "react";
 import propTypes from "prop-types";
+import { createFave } from "../../config/model";
 import {
   Text,
   View,
@@ -11,6 +12,7 @@ import moment from "moment";
 import { goToSpeaker } from "../../navigation/navigationHelpers";
 
 const Session = ({ list, name }) => {
+  console.log(list.item);
   return (
     <View>
       <Text>{list.item.location}</Text>
@@ -28,7 +30,7 @@ const Session = ({ list, name }) => {
         </View>
       </TouchableHighlight>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => createFave(list.item.session_id)}>
         <Text>Add To Faves</Text>
       </TouchableOpacity>
     </View>
