@@ -13,7 +13,11 @@ import { goToSpeaker } from "../../navigation/navigationHelpers";
 
 const Session = ({ list, name, faves }) => {
   // console.log(list.item);
-  console.log(faves);
+  // console.log(list);
+  // console.log(faves);
+  // console.log(name);
+  console.log(faves[name.session]);
+
   return (
     <View>
       <Text>{list.item.location}</Text>
@@ -31,12 +35,17 @@ const Session = ({ list, name, faves }) => {
         </View>
       </TouchableHighlight>
 
-      <TouchableOpacity onPress={() => createFave(list.item.session_id)}>
-        <Text>Add To Faves</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => deleteFave(list.item.session_id)}>
-        <Text>Remove From Faves</Text>
-      </TouchableOpacity>
+      {faves[name.session] === undefined && (
+        <TouchableOpacity onPress={() => createFave(list.item.session_id)}>
+          <Text>Add To Faves</Text>
+        </TouchableOpacity>
+      )}
+
+      {faves[name.session] && (
+        <TouchableOpacity onPress={() => deleteFave(list.item.session_id)}>
+          <Text>Remove From Faves</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

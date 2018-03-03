@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Session from "./Session";
 import { connect } from "react-redux";
+import { letsFetchSomeFaves } from "../../redux/modules/faves";
 import { formatDataObject } from "../../redux/helpers";
 
 class SessionContainer extends Component {
@@ -18,6 +19,8 @@ class SessionContainer extends Component {
   };
 
   componentDidMount() {
+    this.props.dispatch(letsFetchSomeFaves());
+
     let speakerId = this.props.route.params.sessionData.item.speaker;
     fetch(
       `https://r10app-95fea.firebaseio.com/speakers.json?orderBy="speaker_id"&equalTo="${speakerId}"`
@@ -32,7 +35,6 @@ class SessionContainer extends Component {
   }
 
   render() {
-    // console.log(this.props.faves);
     return (
       <Session
         list={this.props.route.params.sessionData}
