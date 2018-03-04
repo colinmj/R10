@@ -20,7 +20,12 @@ class NavigationLayout extends Component {
         initialTab="schedule"
         tabBarColor={"black"}
       >
-        <TabItem id="schedule" title="Schedule" renderTitle={this.renderTitle}>
+        <TabItem
+          id="schedule"
+          title="Schedule"
+          renderTitle={this.renderTitle}
+          renderIcon={isSelected => this.renderIcon(isSelected, "ios-calendar")}
+        >
           <StackNavigation
             // id="schedule"
             navigatorUID="schedule"
@@ -46,9 +51,7 @@ class NavigationLayout extends Component {
           id="faves"
           title="Faves"
           renderTitle={this.renderTitle}
-          renderIcon={isSelected =>
-            this.renderIcon(isSelected, "ios-information-circle")
-          }
+          renderIcon={isSelected => this.renderIcon(isSelected, "ios-heart")}
         >
           <StackNavigation
             // id="about"

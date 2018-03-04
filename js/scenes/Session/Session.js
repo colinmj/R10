@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import propTypes from "prop-types";
 import { createFave, deleteFave } from "../../config/model";
+import { styles } from "./styles";
 import {
   Text,
   View,
   TouchableHighlight,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Button
 } from "react-native";
 import moment from "moment";
 import { goToSpeaker } from "../../navigation/navigationHelpers";
@@ -41,30 +43,35 @@ class Session extends Component {
   render() {
     const { list, name, faves } = this.props;
     return (
-      <View>
-        <Text>{list.item.location}</Text>
-        <Text>{list.item.title}</Text>
-        <Text>{moment.unix(list.item.start_time).format("LT")}</Text>
-        <Text>{list.item.description}</Text>
+      <View style={styles.container}>
+        <Text style={styles.location}>{list.item.location}</Text>
+        <Text style={styles.eventTitle}>{list.item.title}</Text>
+        <Text style={styles.time}>
+          {moment.unix(list.item.start_time).format("LT")}
+        </Text>
+        <Text style={styles.mainBody}>{list.item.description}</Text>
         <TouchableHighlight onPress={() => goToSpeaker(name)}>
           <View>
-            <Text>Presented by:</Text>
-            <Image
-              source={{ uri: name.image }}
-              style={{ height: 50, width: 50 }}
-            />
-            <Text> {name.name}</Text>
+            <Text style={styles.location}>Presented by:</Text>
+            <Image source={{ uri: name.image }} style={styles.image} />
+            <Text style={styles.presenter}> {name.name}</Text>
           </View>
         </TouchableHighlight>
 
         {faves[name.session] === undefined && (
-          <TouchableOpacity onPress={this.renderAddToFave}>
+          <TouchableOpacity
+            onPress={this.renderAddToFave}
+            style={styles.button}
+          >
             <Text>Add To Faves</Text>
           </TouchableOpacity>
         )}
 
         {faves[name.session] && (
-          <TouchableOpacity onPress={this.renderRemoveFave}>
+          <TouchableOpacity
+            onPress={this.renderRemoveFave}
+            style={styles.button}
+          >
             <Text>Remove From Faves</Text>
           </TouchableOpacity>
         )}

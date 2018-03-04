@@ -24,5 +24,8 @@ export const styles = StyleSheet.create({
     color: colors.mediumGrey,
     fontFamily: fontMainLight,
     paddingTop: 5
+  },
+  eventTitle: {
+    fontFamily: fontMain
   }
 });
