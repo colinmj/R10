@@ -11,37 +11,50 @@ import {
   Button
 } from "react-native";
 import moment from "moment";
+import { connect } from "react-redux";
 import { goToSpeaker } from "../../navigation/navigationHelpers";
+import { letsFetchSomeFaves } from "../../redux/modules/faves";
 
 class Session extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addToFave: true,
-      removeFromFave: false
+      faved: false,
+      status: ""
     };
 
-    this.renderAddToFave = this.renderAddToFave.bind(this);
-    this.renderRemoveFave = this.renderRemoveFave.bind(this);
+    this.updateFaves = this.updateFaves.bind(this);
   }
 
-  renderAddToFave() {
-    createFave(this.props.list.item.session_id);
-    this.setState({
-      addToFave: !this.state.addToFave,
-      removeFromFave: !this.state.addToFave
-    });
+  updateFaves() {
+    const sessionId = this.props.list.item.session_id;
+    this.props.dispatch(letsFetchSomeFaves());
+    const faves = this.props.faves;
+    // this.props.dispatch(fetchFavesFromDB());
+    if (faves[sessionId] === "true") {
+      deleteFave(sessionId);
+      this.setState({ status: "Add to ", faved: false });
+    } else {
+      createFave(sessionId);
+      this.setState({ status: "Remove from ", faved: true });
+    }
+    this.props.dispatch(letsFetchSomeFaves());
   }
 
-  renderRemoveFave() {
-    deleteFave(this.props.list.item.session_id);
-    this.setState({
-      removeFromFave: !this.state.removeFromFave
-    });
+  componentDidMount() {
+    const sessionId = this.props.list.item.session_id;
+    const faves = this.props.faves;
+    if (faves[sessionId] === "true") {
+      this.setState({ status: "Remove from ", faved: true });
+    } else {
+      this.setState({ status: "Add to ", faved: false });
+    }
   }
 
   render() {
     const { list, name, faves } = this.props;
+
+    console.log(this.props.faves[this.props.name.session]);
     return (
       <View style={styles.container}>
         <Text style={styles.location}>{list.item.location}</Text>
@@ -57,27 +70,16 @@ class Session extends Component {
             <Text style={styles.presenter}> {name.name}</Text>
           </View>
         </TouchableHighlight>
-
-        {faves[name.session] === undefined && (
-          <TouchableOpacity
-            onPress={this.renderAddToFave}
-            style={styles.button}
-          >
-            <Text>Add To Faves</Text>
-          </TouchableOpacity>
-        )}
-
-        {faves[name.session] && (
-          <TouchableOpacity
-            onPress={this.renderRemoveFave}
-            style={styles.button}
-          >
-            <Text>Remove From Faves</Text>
-          </TouchableOpacity>
-        )}
+        <TouchableOpacity onPress={this.updateFaves}>
+          <Text>{`${this.state.status} Favourites`}</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
 
-export default Session;
+const mapStateToProps = state => ({
+  faves: state.faves.faves
+});
+
+export default connect(mapStateToProps)(Session);

@@ -35,6 +35,8 @@ class SessionContainer extends Component {
   }
 
   render() {
+    console.log(this.props.route.params.sessionData.item.session_id);
+    console.log(this.props.faves);
     return (
       <Session
         list={this.props.route.params.sessionData}

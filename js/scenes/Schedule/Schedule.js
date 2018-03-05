@@ -4,7 +4,7 @@ import propTypes from "prop-types";
 import ScheduleList from "../../components/ScheduleList";
 
 const Schedule = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <View>
       <ScheduleList data={data} />
