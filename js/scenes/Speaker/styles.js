@@ -57,14 +57,11 @@ export const styles = StyleSheet.create({
     paddingRight: 10
   },
   button: {
-    backgroundColor: "red",
-    paddingTop: 4,
     marginTop: 20,
     marginBottom: 20,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 4,
+
     borderRadius: 50,
-    alignSelf: "center"
+    alignSelf: "center",
+    height: 35
   }
 });

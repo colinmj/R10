@@ -4,6 +4,7 @@ import { createFave, deleteFave } from "../../config/model";
 import { toggleFave } from "../../redux/modules/faves";
 import { styles } from "./styles";
 import GradientButton from "../../components/GradientButton";
+import Icon from "react-native-vector-icons/Ionicons";
 import {
   Text,
   View,
@@ -28,7 +29,32 @@ class Session extends Component {
     console.log(this.props.faves[this.props.name.session]);
     return (
       <View style={styles.container}>
-        <Text style={styles.location}>{list.item.location}</Text>
+        <View style={styles.heartContainer}>
+          <Text style={styles.location}>{list.item.location}</Text>
+          {!!Object.keys(faves).includes(list.item.session_id) ? (
+            <Icon
+              name="ios-heart"
+              color="red"
+              onPress={() =>
+                toggleFave(
+                  list.item.session_id,
+                  !Object.keys(faves).includes(list.item.session_id)
+                )
+              }
+            />
+          ) : (
+            <Icon
+              name="ios-heart"
+              color="gray"
+              onPress={() =>
+                toggleFave(
+                  list.item.session_id,
+                  !Object.keys(faves).includes(list.item.session_id)
+                )
+              }
+            />
+          )}
+        </View>
         <Text style={styles.eventTitle}>{list.item.title}</Text>
         <Text style={styles.time}>
           {moment.unix(list.item.start_time).format("LT")}
@@ -50,18 +76,13 @@ class Session extends Component {
             )
           }
         >
-          {/* <GradientButton
+          <GradientButton
             text={
               !!Object.keys(faves).includes(list.item.session_id)
-                ? "Remove from Favourites"
-                : "Add "
+                ? "Remove From Favourites"
+                : "Add To Favourites "
             }
-          /> */}
-          <Text>
-            {!!Object.keys(faves).includes(list.item.session_id)
-              ? "Remove from Favourites"
-              : "Add "}
-          </Text>
+          />
         </TouchableOpacity>
       </View>
     );

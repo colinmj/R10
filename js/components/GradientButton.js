@@ -23,7 +23,7 @@ const GradientButton = ({ text }) => (
       style={{
         color: colors.white,
         fontFamily: typography.fontMain,
-        fontSize: 15,
+        fontSize: 13,
         textAlign: "center"
       }}
     >

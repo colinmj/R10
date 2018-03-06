@@ -12,6 +12,7 @@ import {
 import Icon from "react-native-vector-icons/Ionicons";
 import { removeSpeaker } from "../../navigation/navigationHelpers";
 import { styles } from "./styles";
+import GradientButton from "../../components/GradientButton";
 
 const Speaker = ({ speakerData }) => {
   return (
@@ -38,7 +39,7 @@ const Speaker = ({ speakerData }) => {
             style={styles.button}
             onPress={() => Linking.openURL(speakerData.url)}
           >
-            <Text>Read More On Wikepedia</Text>
+            <GradientButton text={"Read More On Wikipedia"} />
           </TouchableOpacity>
         </View>
       </View>
