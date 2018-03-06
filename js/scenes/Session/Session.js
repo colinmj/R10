@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import propTypes from "prop-types";
 import { createFave, deleteFave } from "../../config/model";
 import { styles } from "./styles";
+import GradientButton from "../../components/GradientButton";
 import {
   Text,
   View,
@@ -30,7 +31,7 @@ class Session extends Component {
     const sessionId = this.props.list.item.session_id;
     this.props.dispatch(letsFetchSomeFaves());
     const faves = this.props.faves;
-    // this.props.dispatch(fetchFavesFromDB());
+
     if (faves[sessionId] === "true") {
       deleteFave(sessionId);
       this.setState({ status: "Add to ", faved: false });
@@ -44,7 +45,7 @@ class Session extends Component {
   componentDidMount() {
     const sessionId = this.props.list.item.session_id;
     const faves = this.props.faves;
-    if (faves[sessionId] === "true") {
+    if (faves[sessionId] && faves[sessionId] === "true") {
       this.setState({ status: "Remove from ", faved: true });
     } else {
       this.setState({ status: "Add to ", faved: false });
@@ -70,8 +71,9 @@ class Session extends Component {
             <Text style={styles.presenter}> {name.name}</Text>
           </View>
         </TouchableHighlight>
-        <TouchableOpacity onPress={this.updateFaves}>
-          <Text>{`${this.state.status} Favourites`}</Text>
+        <TouchableOpacity style={styles.button} onPress={this.updateFaves}>
+          {/* <Text>{`${this.state.status} Favourites`}</Text> */}
+          <GradientButton text={`${this.state.status} Favourites`} />
         </TouchableOpacity>
       </View>
     );

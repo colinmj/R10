@@ -34,18 +34,15 @@ export const styles = StyleSheet.create({
   presenter: {
     fontFamily: fontMain
   },
-  button: {
-    backgroundColor: "red",
-    paddingTop: 4,
-    marginTop: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 4,
-    borderRadius: 50,
-    alignSelf: "center"
-  },
+
   container: {
     paddingLeft: 10,
     paddingRight: 10
+  },
+  button: {
+    height: 40,
+    marginRight: 20,
+    marginLeft: 20,
+    marginTop: 20
   }
 });
