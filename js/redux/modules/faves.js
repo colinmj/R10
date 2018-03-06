@@ -1,22 +1,19 @@
 import realm, { queryFaves, createFave, deleteFave } from "../../config/model";
 
 GET_FAVES = "GET_FAVES";
-ADD_FAVE = "ADD_FAVES";
-REMOVE_FAVE = "REMOVE_FAVES";
+TOGGLE_FAVES = "TOGGLE_FAVES";
+// ADD_FAVE = "ADD_FAVES";
+// REMOVE_FAVE = "REMOVE_FAVES";
 
-const getFaves = faves => ({
+export const getFaves = faves => ({
   type: GET_FAVES,
   payload: faves
 });
 
-const addFave = fave => ({
-  type: ADD_FAVE,
-  payload: fave
-});
-
-const removeFave = fave => ({
-  type: REMOVE_FAVE,
-  payload: fave
+export const toggleFave = (session_id, onOrOff) => ({
+  type: TOGGLE_FAVES,
+  session_id: session_id,
+  onOrOff: onOrOff
 });
 
 export const letsFetchSomeFaves = () => dispatch => {
@@ -26,23 +23,11 @@ export const letsFetchSomeFaves = () => dispatch => {
   dispatch(getFaves(faves));
 };
 
-export const letsAddAFave = faveId => dispatch => {
-  const added = createFave(faveId);
-  dispatch(addFave(faveId));
-};
-
-export const letsRemoveAFave = faveId => dispatch => {
-  const removed = deleteFave(faveId);
-  dispatch(removeFave(faveId));
-};
-
 //reducer
 
 export default (
   state = {
-    faves: "",
-    addFave: "",
-    removeFave: ""
+    faves: {}
   },
   action
 ) => {
@@ -53,11 +38,13 @@ export default (
         faves: action.payload
       };
     }
-    case ADD_FAVE: {
-      return {};
-    }
-    case REMOVE_FAVE: {
-      return {};
+    case TOGGLE_FAVES: {
+      if (action.onOrOff) createFave(action.session_id);
+      else deleteFave(action.session_id);
+      const data = queryFaves();
+      const faves = {};
+      data.map((item, key) => (faves[item.id] = "true"));
+      return { ...state, loading: false, faves, error: "" };
     }
     default:
       return state;
