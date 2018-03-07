@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
 
+import { colors, typography } from "../../config/styles";
+
 export const styles = StyleSheet.create({
   header: {
     marginTop: 30,
@@ -12,14 +14,13 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 25,
-    fontFamily: 'Montserrat-Light',
+    fontFamily: "Montserrat-Light",
     marginLeft: 5,
     marginRight: 5
   },
-  code: {
-    color: "#9963ea",
-    marginTop: 10,
-    marginBottom: 10
+  text: {
+    fontFamily: typography.fontMainLight,
+    margin: 10
   },
   loader: {
     flex: 1,

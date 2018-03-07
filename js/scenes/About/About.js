@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Text, View, Image, ScrollView, ActivityIndicator } from "react-native";
 import { styles } from "./styles";
+import Accordian from "../../components/Accordian";
 
 const About = ({ data, loading }) => {
   console.log(data);
@@ -41,14 +42,13 @@ const About = ({ data, loading }) => {
           The R10 conference will take place on June 27, 2017, in Vancouver B.C.
         </Text>
         <Text style={styles.title}>Code of Conduct</Text>
-        {data.map(item => {
+        {data.map((item, i) => {
           return (
-            <View key={item.title}>
-              <Text style={styles.code}> {item.title}</Text>
-              <Text style={{ marginRight: 5, marginLeft: 5 }}>
-                {item.description}
-              </Text>
-            </View>
+            <Accordian
+              title={item.title}
+              description={item.description}
+              key={i}
+            />
           );
         })}
       </View>

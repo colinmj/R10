@@ -13,7 +13,8 @@ class ScheduleContainer extends Component {
   static route = {
     navigationBar: {
       title: "Schedule",
-      tintColor: "black"
+      tintColor: "white",
+      fontFamily: "Montserrat"
     }
   };
 

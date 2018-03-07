@@ -27,5 +27,16 @@ export const styles = StyleSheet.create({
   },
   eventTitle: {
     fontFamily: fontMain
+  },
+  codeConductTitle: {
+    color: "#9963ea",
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 10,
+    fontSize: 15
+  },
+  heartAndLocationView: {
+    flexDirection: "row",
+    justifyContent: "space-between"
   }
 });

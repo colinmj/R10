@@ -26,7 +26,7 @@ class Session extends Component {
   render() {
     const { list, name, faves, toggleFave } = this.props;
 
-    console.log(this.props.faves[this.props.name.session]);
+    console.log(list);
     return (
       <View style={styles.container}>
         <View style={styles.heartContainer}>

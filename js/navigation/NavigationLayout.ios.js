@@ -30,7 +30,7 @@ const fancyLinearGradient = () => {
 const defaultRouteConfig = {
   navigationBar: {
     tintColor: "white", // colour of scene title and hamburger menu
-    titleStyle: { fontFamily: typography.fontRegular },
+    titleStyle: { fontFamily: typography.fontMain },
     renderBackground: () => fancyLinearGradient() // https://github.com/expo/ex-navigation
   }
 };
