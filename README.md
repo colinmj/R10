@@ -19,6 +19,3 @@ Upon loading the app, you start off on the schedule page. This is a list of all 
 
 Colin Matson-Jones
 
-## Awknowledgements
-
-This was a challenging project, and I enlisted the help of Lindsey Woo and Qingxin Yuan on several occasions.
