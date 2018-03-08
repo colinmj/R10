@@ -30,9 +30,8 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new RealmReactPackage(),
             new VectorIconsPackage(),
-            new LinearGradientPackage(),
-            new RealmReactPackage()
-            // new VectorIconsPackage()
+            new LinearGradientPackage()
+            
       );
     }
 

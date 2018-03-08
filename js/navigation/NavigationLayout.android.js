@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Router from "./routes";
-import { Text } from "react-native";
+import { Text, Dimensions } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 import {
   StackNavigation,
   DrawerNavigation,
@@ -10,6 +11,29 @@ import {
 import Icon from "react-native-vector-icons/Ionicons";
 
 import { colors, typography } from "../config/styles";
+
+const { windowWidth } = Dimensions.get("window");
+
+const fancyLinearGradient = () => {
+  return (
+    <LinearGradient
+      start={{ x: 1, y: 0 }}
+      end={{ x: 0, y: 1 }}
+      locations={[0, 1]}
+      colors={["purple", "red"]}
+      width={windowWidth}
+      height={63}
+    />
+  );
+};
+
+const defaultRouteConfig = {
+  navigationBar: {
+    tintColor: "white", // colour of scene title and hamburger menu
+    titleStyle: { fontFamily: typography.fontMain },
+    renderBackground: () => fancyLinearGradient() // https://github.com/expo/ex-navigation
+  }
+};
 
 class NavigationLayout extends Component {
   render() {
@@ -24,11 +48,13 @@ class NavigationLayout extends Component {
           id="schedule"
           title="Schedule"
           renderTitle={isSelected => this.renderTitle(isSelected, "Schedule")}
+          renderIcon={isSelected => this.renderIcon(isSelected, "md-calendar")}
         >
           <StackNavigation
             id="schedule"
             navigatorUID="schedule"
             initialRoute={Router.getRoute("schedule")}
+            defaultRouteConfig={defaultRouteConfig}
           />
         </DrawerNavigationItem>
 
@@ -36,11 +62,13 @@ class NavigationLayout extends Component {
           id="faves"
           title="Faves"
           renderTitle={isSelected => this.renderTitle(isSelected, "Faves")}
+          renderIcon={isSelected => this.renderIcon(isSelected, "md-heart")}
         >
           <StackNavigation
             id="schedule"
             navigatorUID="faves"
             initialRoute={Router.getRoute("faves")}
+            defaultRouteConfig={defaultRouteConfig}
           />
         </DrawerNavigationItem>
 
@@ -49,12 +77,13 @@ class NavigationLayout extends Component {
           title="About"
           renderTitle={isSelected => this.renderTitle(isSelected, "About")}
           renderIcon={isSelected =>
-            this.renderIcon(isSelected, "ios-information-circle")
+            this.renderIcon(isSelected, "md-information-circle")
           }
         >
           <StackNavigation
             id="about"
             initialRoute={Router.getRoute("about")}
+            defaultRouteConfig={defaultRouteConfig}
             navigatorUID="about"
           />
         </DrawerNavigationItem>
@@ -66,18 +95,22 @@ class NavigationLayout extends Component {
       <Text
         style={{
           // fontFamily: typography.fontMain,
-          fontSize: 10,
-          color: isSelected ? "pink" : "black"
+          fontSize: 15,
+          color: isSelected ? "purple" : "black",
+          marginLeft: 10
         }}
       >
-        {console.log("blahblah")}
         {title}
       </Text>
     );
   }
   renderIcon(isSelected, iconName) {
     return (
-      <Icon name={iconName} size={24} color={isSelected ? "white" : "gray"} />
+      <Icon
+        name={iconName}
+        size={24}
+        color={isSelected ? colors.purple : "gray"}
+      />
     );
   }
 }

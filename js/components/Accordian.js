@@ -38,7 +38,9 @@ class Accordian extends Component {
           {this.state.opened ? "- " : "+ "}
           {title}
         </Animated.Text>
-        {this.state.opened && <Text>{description}</Text>}
+        {this.state.opened && (
+          <Text style={{ marginRight: 10, marginLeft: 10 }}>{description}</Text>
+        )}
       </TouchableOpacity>
     );
   }
